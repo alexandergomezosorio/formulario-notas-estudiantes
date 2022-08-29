@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+  </head>
+
+  <body class="bg-blue-400">
+    <main>
+      <form id="enviarNota">
+        <div class="mt-20">
+          <div
+            class="inputs drop-shadow-xl bg-slate-300 w-96 h-1/2 p-2 mx-auto rounded-md"
+          >
+            <h1 class="text-center text-4xl p-5">Notas Estudiantes</h1>
+            <div class="">
+              <label class="ml-2">Identificación:</label>
+              <input
+                class="w-full border shadow rounded-lg"
+                type="text"
+                id="identificacion"
+              />
+              <label class="ml-2">Nombre:</label>
+              <input
+                class="w-full border shadow rounded-lg"
+                type="text"
+                id="nombre"
+              />
+              <label class="ml-2">Submodulo:</label>
+              <select class="w-full border shadow rounded-lg" id="subModulo">
+                <option value=""></option>
+                <option value="1">Programacion avanzada</option>
+                <option value="2">Nuevas tecnologias</option>
+                <option value="3">Moviles III</option>
+              </select>
+              <label class="ml-2">Nota 1:</label>
+              <input
+                class="w-full border shadow rounded-lg"
+                type="text"
+                id="nota1"
+              />
+              <label class="ml-2">Nota 2:</label>
+              <input
+                class="w-full border shadow rounded-lg"
+                type="text"
+                id="nota2"
+              />
+            </div>
+            <div id="spinner">
+              <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+              </div>
+            </div>
+            <div>
+              <p id="p1"></p>
+              <p id="p2"></p>
+            </div>
+            <div
+              class="botones grid grid-cols-2 gap-4 place-content-center h-24 w-80 ml-6"
+            >
+              <button class="bg-blue-500 rounded-lg" id="btnCalcular">
+                Calcular/Guardar</button
+              ><button class="bg-blue-500 rounded-lg" id="btnBuscar">
+                Buscar
+              </button>
+              <button class="bg-red-500 rounded-lg" id="btnLimpiar">
+                Limpiar
+              </button>
+              <button class="bg-blue-500 rounded-lg" id="btnListar">
+                Listar
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mensaje {
+            color: red
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>SISTEMA DE NOTAS</header>
+    <br>
+    <main>
+        <label>Identificación:</label>
+        <input type="text" name="identif" id="identif" autofocus><br>
+        <span id="mensident" class="mensaje">
+        </span>
+        <br>
+        <label>Nombre:</label>
+        <input type="text" name="nombres" id="nombres">
+        <br>
+        <span id="mensnombres" class="mensaje">
+
+        </span>
+        <br>
+        <label>Submodulo:</label>
+        <select name="submodulo" id="submodulo">
+            <option value="1">Programacion avanzada</option>
+            <option value="2">Nuevas tecnologias</option>
+            <option value="3">Moviles III</option>
+        </select>
+        <br><br>
+        <label>Nota 1</label>
+        <input type="text" id="nota1" class="mensaje">
+        <br>
+        <span id="mensnota1" class="mensaje">
+
+        </span>
+        <br>
+        <label>Nota 2</label>
+        <input type="text" id="nota2">
+        <br>
+        <span id="mensnota2" class="mensaje">
+
+        </span>
+        <br><br>
+        <div id="calculos">
+
+        </div>
+        <button id="btncalcular">Calcular/Guardar</button>
+        <button id="btnlimpiar">Limpiar</button>
+        <br><br>
+        <button id="btnlistar">Listar</button>
+        <button id="btnbuscar">Buscar</button>
+    </main>
+    <script>
+        // Referenciar objetos
+        let identif = document.getElementById("identif");
+        let nombres = document.querySelector("#nombres");
+        let submodulo = document.querySelector("#submodulo");
+        let nota1 = document.querySelector("#nota1");
+        let nota2 = document.getElementById("nota2");
+        let mensident = document.querySelector("#mensident");
+        let mensnombres = document.getElementById("mensnombres");
+        let mensnota1 = document.getElementById("mensnota1");
+        let mensnota2 = document.getElementById("mensnota2");
+        let btncalcular = document.getElementById("btncalcular");
+        let btnlimpiar = document.getElementById("btnlimpiar");
+        let btnlistar = document.getElementById("btnlistar");
+        let btnbuscar = document.getElementById("btnbuscar");
+        let calculos = document.querySelector("#calculos");
+        // eventos
+        identif.onfocus = () => {
+            mensident.textContent = "Ingrese la identificación"
+        }
+        identif.addEventListener("blur", () => {
+            mensident.textContent = "";
+        })
+        nombres.addEventListener("focus", () => {
+            mensnombres.textContent = "Ingrese los nombres";
+        })
+        nombres.addEventListener("blur", () => {
+            mensnombres.textContent = "";
+        })
+        nota1.addEventListener("focus", () => {
+            mensnota1.textContent = "Ingrese la nota 1";
+        })
+        nota1.addEventListener("blur", () => {
+            mensnota1.textContent = "";
+        })
+        nota2.addEventListener("focus", () => {
+            mensnota2.textContent = "Ingrese la nota 2";
+        })
+        nota2.addEventListener("blur", () => {
+            mensnota2.textContent = "";
+        })
+        btncalcular.addEventListener("click", function () {
+            if (identif.value != "") {
+                if (nombres.value != "") {
+                    if (nota1.value != "") {
+                        if (nota2.value != "") {
+                            if (parseFloat(nota1.value) >= 0 && parseFloat(nota1.value) <= 5) {
+                                if (parseFloat(nota2.value) >= 0 && parseFloat(nota2.value) <= 5) {
+                                    // Generar los elementos para definitiva y observación (DOM dinámico)
+                                    let definitiva = (parseFloat(nota1.value) + parseFloat(nota2.value))/2;
+                                    let observacion = definitiva >= 3 ? "Gana" : "Pierde";
+                                    let newLabelDef = document.createElement("label");
+                                    let newTextLalbelDef = document.createTextNode("Definitiva  ");
+                                    let newSpanDef = document.createElement("span");
+                                    let newTextSpanDef = document.createTextNode(definitiva);
+                                    newLabelDef.appendChild(newTextLalbelDef);
+                                    newSpanDef.appendChild(newTextSpanDef);
+                                    calculos.appendChild(newLabelDef);
+                                    calculos.appendChild(newSpanDef);
+                                    
+                                }
+                                else {
+                                    mensnota2.textContent = "La nota 2 debe estar entre 0 y 5";
+                                }
+                            }
+                            else {
+                                mensnota1.textContent = "La nota 1 debe estar entre 0 y 5";
+                            }
+                        }
+                        else {
+                            mensnota2.textContent = "Debe ingresar la nota 2"
+                        }
+                    }
+                    else {
+                        mensnota1.textContent = "Debe ingresar la nota 1"
+                    }
+                }
+                else {
+                    mensnombres.textContent = "Debe ingresar los nombres"
+                }
+            }
+            else {
+                mensident.textContent = "Debe ingresar la identificación"
+            }
+
+            })
+    </script>
+</body>
+
+</html> -->
